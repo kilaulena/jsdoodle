@@ -1,0 +1,29 @@
+<h1>{{ title }}</h1>
+
+<h2>Please vote here:</h2>
+
+<form method="post">
+
+  <div class="table" id="poll">
+    <div class="tr">
+      <div class="th">Name</div>
+      {{#options}}
+        <div class="th">{{ . }}</div>
+      {{/options}}    
+    </div>
+  
+    <div class="tr">
+        <label for="vote[name]" class="hidden">Name</label>
+        <div class="td"><input type="text" id="vote[name]" name="vote_name"></input></div>
+        {{#options}}
+          <div class="td">
+            <!-- <label for> -->
+            <input type="checkbox" id="vote[option1]" name="vote_option1" title="{{ . }}"></input>
+          </div>
+        {{/options}}
+    </div>
+  
+  </div>
+
+  <input type="submit" value="Vote"/>
+</form>    

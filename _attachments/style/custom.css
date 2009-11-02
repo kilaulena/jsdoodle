@@ -1,0 +1,87 @@
+/* general */
+
+.container {width:950px;margin:0 auto;}
+
+#notice, #error {
+  display: none;
+}
+
+#header {
+  background: #FFD700;
+  clear: both;
+  height: 70px;
+}
+
+#header #logo {
+  color: #FF0;
+  float: right;
+  font-size: 4.0em;
+  font-weight: bold;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+#content {
+  background-color: #FFEC8B;
+  padding: 20px;
+}
+
+
+/* forms */
+
+input.error {
+  border: 1px red solid;
+}
+
+.correct_answer {
+  background:#E6EFC2;
+  color:#264409;
+  border: 1px solid #C6D880;
+  padding:.8em;
+}
+
+/* navigation */
+
+#nav .account {
+  display: none; /* only shown after login */
+}
+
+#nav {
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#nav ul {
+  margin-left: 0px;
+}
+
+#nav li {
+  display: inline-block;
+}
+
+#nav li a {
+  padding: 10px;
+  padding-bottom: 5px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  font-size: 1.5em;
+}
+
+#nav li a.active {
+  background: #000;
+}
+
+/* poll table */
+
+.hidden { display:none;}
+
+.table{display:table; border:1px solid #003399;border-collapse:collapse;}
+
+.th{display:table-cell; background:#FFD700;padding: 5px; border: 1px solid #003399;}
+
+.tr{display:table-row;}
+
+.td{display:table-cell; padding: 5px; border: 1px solid #003399;}

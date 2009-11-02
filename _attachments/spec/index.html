@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="jspec/jspec.css" type="text/css"/>
+    <script src="jspec/jspec.js"></script>
+    <script src="../js/lib.js"></script>
+    <script src="../js/models/poll.js"></script>
+    <script src="../js/views/poll.js"></script>
+    <script>
+      function runSuites() {
+        JSpec
+        .exec('poll_spec.js')
+        .exec('poll_view_spec.js')
+        .run({failuresOnly : true})
+        .report();
+      }
+    </script>
+  </head>
+  <body onLoad="runSuites()">
+    <div id="jspec"></div>
+  </body>
+</html>

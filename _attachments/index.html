@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jsdoodle</title>
+    <link rel="stylesheet" href="style/blueprint/screen.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="style/blueprint/print.css" type="text/css" media="printer">
+    <link rel="stylesheet" href="style/custom.css" type="text/css" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <div id="header">
+        <div id="nav" class="column span-17">
+          <ul>
+            <li>
+              <a href="#/polls/new">Create a poll</a>
+            </li>
+            <li>
+              <a href="#/polls">All polls</a>
+            </li>
+          </ul>
+        </div>
+        <div id="error" class="error"></div>
+        <div id="notice" class="notice"></div>
+        <div id="content" class="column span-23"></div>
+        <div id="spinner">spinspin</div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" charset="utf-8"></script>
+  <script src="./vendor/json/json2.js"></script>
+  <script src="./vendor/jquery/jquery.js"></script>
+  <script src="./vendor/jquery/jquery.couch.js"></script>
+  <script src="./vendor/couchapp/jquery.couchapp.js"></script>
+  <script src="./vendor/sammy/sammy.js"></script>
+  <script src="./vendor/mustache/mustache.js"></script>
+  <script src="./vendor/mustache/sammy.mustache.js"></script>
+  <script src="./js/lib.js"></script>
+  <script src="./js/controllers/polls.js"></script>
+  <script src="./js/models/poll.js"></script>
+  <script src="./js/views/poll_view.js"></script>
+  <script src="./js/application.js"></script>
+</html>
