@@ -26,6 +26,7 @@ Polls = function(sammy) { with(sammy) {
         trigger('notice', {message: 'Thank you for your vote!'});
         // context.mark_false_answers(cloze.correct_answers(context.params['answers']), '#blank{{i}}');
         // $('#submit').hide();
+        $('#spinner').hide();
       }
     });
     return false;

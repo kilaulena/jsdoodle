@@ -850,7 +850,6 @@
           wrapped_callback.apply(context, [response])
         });
       }
-      $('#spinner').hide();
     },
     
     // Changes the location of the current window. If <tt>to</tt> begins with 

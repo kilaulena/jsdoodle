@@ -7,8 +7,11 @@ Feature: polls
     When I go to the start page
       And I follow "Create a poll"
       And I fill in "Title" with "Wo gehen wir heute essen?"
+      And I follow "Add option"
       And I fill in "Option 1" with "Bulgare"
+      And I follow "Add option"
       And I fill in "Option 2" with "Russe"
+      And I follow "Add option"
       And I fill in "Option 3" with "Frittiersalon"
       And I press "Save"
     # Then I should see "Poll successfully created"

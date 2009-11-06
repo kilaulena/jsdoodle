@@ -17,6 +17,7 @@ var sammy = new Sammy.Application(function() { with(this) {
     new_object: function(name) {
       var plural_name = name.toLowerCase() + 's';
       this.partial('./templates/' + plural_name + '/new.mustache');
+      $('#spinner').hide();
     },
     create_object: function(name, params, options) {
       options = options || {};
@@ -32,6 +33,7 @@ var sammy = new Sammy.Application(function() { with(this) {
               options.success(object);
             }            
             context.redirect(options.redirect || ('#/' + name.toLowerCase() + 's/' + res.id));
+            $('#spinner').hide();
           },
           error: function(response_code, res) {
             trigger('error', {message: 'Error saving ' + name + ': ' + res});
@@ -51,6 +53,7 @@ var sammy = new Sammy.Application(function() { with(this) {
            var view = {};
            view[plural_name] = json['rows'].map(function(row) {return row.doc});
            context.partial('./templates/' + plural_name + '/index.mustache', view);
+           $('#spinner').hide();
          }
        });
     },
@@ -62,6 +65,7 @@ var sammy = new Sammy.Application(function() { with(this) {
           var view_prototype = eval(name + 'View');
           var view = new view_prototype(new _prototype(doc));
           context.partial('./templates/' + name.toLowerCase() + 's/show.mustache', view);
+          $('#spinner').hide();
         },
         error: function() {
           context.notFound();
@@ -71,7 +75,8 @@ var sammy = new Sammy.Application(function() { with(this) {
   });
   
   Polls(this);
-
+  Options(this);
+  
   before(function() {
     $('#error').html('').hide();
     $('#notice').html('').hide();

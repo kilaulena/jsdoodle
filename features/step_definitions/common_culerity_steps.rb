@@ -171,7 +171,6 @@ When 'show response' do
   open_response_in_browser
 end
 
-
 def find_label(text)
   $browser.label :text, text
 end

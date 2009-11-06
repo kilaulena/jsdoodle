@@ -100,7 +100,9 @@ var Mustache = function() {
             case "{": // the triple mustache is unescaped
               return that.find(name, context);
             default: // escape the value
-              return that.escape(that.find(name, context));
+              var tmp = that.escape(that.find(name, context));
+              alert(tmp);
+              return tmp;
           }
         },this);
       };
@@ -134,7 +136,9 @@ var Mustache = function() {
     find: function(name, context) {
       name = this.trim(name);
       if(typeof context[name] === "function") {
-        return context[name].apply(context);
+        var tmp = context[name].apply(context);
+        alert(context[name]);
+        return tmp;
       }
       if(context[name] !== undefined) {
         return context[name];
@@ -148,6 +152,7 @@ var Mustache = function() {
       Does away with nasty characters
     */
     escape: function(s) {
+      alert(s.toString());
       return s.toString().replace(/[&"<>\\]/g, function(s) {
         switch(s) {
           case "&": return "&amp;";
