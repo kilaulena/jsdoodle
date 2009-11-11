@@ -20,7 +20,7 @@ var Mustache = function() {
       if(template.indexOf(this.otag) == -1) {
         return template;
       }
-
+	
       var html = this.render_section(template, context);
       return this.render_tags(html, context);
     },
@@ -135,7 +135,7 @@ var Mustache = function() {
     find: function(name, context) {
       name = this.trim(name);
       if(typeof context[name] === "function") {
-        var tmp = context[name].apply(context);
+        return context[name].apply(context);
       }
       if(context[name] !== undefined) {
         return context[name];

@@ -8,7 +8,6 @@ Feature: polls
       And I follow "Create a poll"
       And I fill in "Title" with "Wo gehen wir heute essen?"
       And I follow "Add choice"
-      And show response
       And I fill in "Choice 1" with "Bulgare"
       And I follow "Add choice"
       And I fill in "Choice 2" with "Russe"

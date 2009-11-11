@@ -4,7 +4,6 @@ Polls = function(sammy) { with(sammy) {
   }});
   
   post('#/polls', function() { with(this) {
-    // console.log('params in post polls: ' + params);
     create_object('Poll', params, {message: 'Poll successfully created'});
   }});
   
