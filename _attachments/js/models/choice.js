@@ -1,11 +1,11 @@
-Option = function(attributes) {
-  this._id = attributes._id || new UUID();
+Choice = function(attributes) {
+  this._id = attributes._id || new UUID().toString();
   this._rev = attributes._rev;
   this.text = attributes.text;
   this.poll_id = attributes.poll_id;
 }
 
-Option.prototype = {
+Choice.prototype = {
   valid: function() {
     return true;
   },
@@ -13,7 +13,7 @@ Option.prototype = {
     return {
       _id: this._id,
       _rev: this._rev,
-      type: 'Option',
+      type: 'Choice',
       text: this.text,
       poll_id: this.poll_id
     };

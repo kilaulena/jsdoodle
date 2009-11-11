@@ -1,9 +1,9 @@
-Given /^a poll with title "([^\"]*)" and options "([^\"]*)"$/ do |title, options|
+Given /^a poll with title "([^\"]*)" and choices "([^\"]*)"$/ do |title, choices|
   When 'I go to the start page'  
   And 'I follow "Create a poll"'  
   And "I fill in \"Title\" with \"#{title}\""
-  options.split(',').map(&:strip).each_with_index do |option, index|
-    And "I fill in \"Option #{index+1}\" with \"#{option}\""
+  choices.split(',').map(&:strip).each_with_index do |choice, index|
+    And "I fill in \"Choice #{index+1}\" with \"#{choice}\""
   end
   And 'I press "Save"'
 end

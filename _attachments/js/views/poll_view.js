@@ -8,8 +8,5 @@ PollView.prototype = {
   },
   title: function() {
     return this.poll.title;
-  },
-  options: function() {
-    return [this.poll.option1, this.poll.option2, this.poll.option3];
   }
 }

@@ -75,7 +75,7 @@ var sammy = new Sammy.Application(function() { with(this) {
   });
   
   Polls(this);
-  Options(this);
+  Choices(this);
   
   before(function() {
     $('#error').html('').hide();

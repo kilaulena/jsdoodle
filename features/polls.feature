@@ -7,12 +7,13 @@ Feature: polls
     When I go to the start page
       And I follow "Create a poll"
       And I fill in "Title" with "Wo gehen wir heute essen?"
-      And I follow "Add option"
-      And I fill in "Option 1" with "Bulgare"
-      And I follow "Add option"
-      And I fill in "Option 2" with "Russe"
-      And I follow "Add option"
-      And I fill in "Option 3" with "Frittiersalon"
+      And I follow "Add choice"
+      And show response
+      And I fill in "Choice 1" with "Bulgare"
+      And I follow "Add choice"
+      And I fill in "Choice 2" with "Russe"
+      And I follow "Add choice"
+      And I fill in "Choice 3" with "Frittiersalon"
       And I press "Save"
     # Then I should see "Poll successfully created"
     Then I should see "Wo gehen wir heute essen?"
@@ -22,7 +23,7 @@ Feature: polls
       And I should see "Please vote here:"
 
   Scenario: vote on a poll
-    Given a poll with title "Wo gehen wir essen?" and options "Bulgare, Frittiersalon"
+    Given a poll with title "Wo gehen wir essen?" and choices "Bulgare, Frittiersalon"
     When I go to the start page
       And I follow "Wo gehen wir essen?"
       And I fill in "Name" with "Lena"
