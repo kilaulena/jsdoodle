@@ -275,6 +275,12 @@
       var param_names = [];
       // if path is a string turn it into a regex
       if (path.constructor == String) {
+        
+        // Needs to be explicitly set because IE will maintain the index unless NULL is returned,
+        // which means that with two consecutive routes that contain params, the second set of params will not be found and end up in splat instead of params
+        // https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/RegExp/lastIndex        
+        PATH_NAME_MATCHER.lastIndex = 0;
+        
         // find the names
         while ((path_match = PATH_NAME_MATCHER.exec(path)) != null) {
           param_names.push(path_match[1]);
@@ -688,14 +694,27 @@
     },
     
     _checkFormSubmission: function(form) {
-      var $form, path, verb, params, returned;
+      var $form, path, verb, params, returned, context;
       this.trigger('check-form-submission', {form: form});
       $form = $(form);
       path  = $form.attr('action');
       verb  = $form.attr('method').toString().toLowerCase();
       params = {'$form': $form};
+      context = this;
       $.each($form.serializeArray(), function(i, field) {
-        if (params[field.name]) {
+        if (field.name.match(/\[[^\]]/)) {
+          var start, match, name, rest;
+          match = field.name.match(/([^\]]*)(\[.*\])?$/);
+          name = match[1];
+          rest = match[2];
+          
+          if (params[name]) {
+            start = params[name];
+          } else {
+            start = {};
+          }
+          params[name] = context._normalizeParameters(context, field.value, rest, start);
+        } else if (params[field.name]) {
           if ($.isArray(params[field.name])) {
             params[field.name].push(field.value);
           } else {
@@ -715,6 +734,25 @@
         }
       }
       return (typeof returned == 'undefined') ? false : returned;
+    },
+    
+    _normalizeParameters: function(context, value, param, params) {
+      var result, match, name, rest;
+      match = param.match(/\[([^\]]*)\](\[.*\])?$/);
+      name = match[1];
+      rest = match[2];
+      result = {};
+      
+      if (rest) {
+        if (!params[name]) {
+          params[name] = {};
+        }
+        result[name] = $.extend(true, params[name], context._normalizeParameters(context, value, rest, params[name]));
+      } else {
+        result[name] = value;
+      }
+      
+      return result;
     },
     
     _parseQueryString: function(path) {

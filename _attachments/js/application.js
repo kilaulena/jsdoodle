@@ -71,11 +71,26 @@ var sammy = new Sammy.Application(function() { with(this) {
           context.notFound();
         }
       });
+    },
+    destroy_object: function(name, params) {
+      var context = this;
+      couchapp.db.openDoc(params['id'], {
+        success: function(doc) {
+          couchapp.db.removeDoc(doc, {
+            success: function(doc) {
+              context.redirect('#/' + name.toLowerCase() + 's');
+              $('#spinner').hide();
+            }
+          });      
+        },
+        error: function() {
+          context.notFound();
+        }        
+      });
     }
   });
   
   Polls(this);
-  Choices(this);
   
   before(function() {
     $('#error').html('').hide();

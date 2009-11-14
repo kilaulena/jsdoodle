@@ -258,7 +258,6 @@
             var keys = options["keys"];
             delete options["keys"];
             data = toJSON({ "keys": keys });
-            console.log(data);
           }
           ajax({
               type: type,

@@ -2,6 +2,7 @@ Poll = function(attributes) {
   this._id = attributes._id;
   this._rev = attributes._rev;
   this.title = attributes.title;
+  this.choices = attributes.choices;
 }
 
 Poll.prototype = {
@@ -19,6 +20,7 @@ Poll.prototype = {
       _rev: this._rev,
       type: 'Poll',
       title: this.title,
+      choices: this.coices
     };
   }
 };

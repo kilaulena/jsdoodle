@@ -3,7 +3,7 @@
 <ul id="all_polls">
   {{#polls}}
     <li>
-      <a href="#/polls/{{_id}}">{{title}}</a>
+      <a href="#/polls/{{_id}}">{{title}}</a> <form action="#/polls/{{_id}}" method="DELETE"><input type="submit" value="delete" /></form>
     </li>
   {{/polls}}
 </ul>
